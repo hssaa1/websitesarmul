@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Autentikasi Pintu Masuk Server</title>
+    <link rel="stylesheet" href="main.css">
+</head>
+<body>
+    <div class="content">
+    <h1>Selamat Datang di Server Rumah Sakit Sari Mulia</h1>
+    <a href="daftar.html"> <button id="regisbutton">Daftar</button></a>
+    <a href="login.html"> <button id="loginButton">Masuk</button> </a>
+    <script>
+        document.getElementById('registerButton').addEventListener('click', async () => {
+            const username = prompt('Masukan Nama:');
+            const credential = await navigator.credentials.create({
+                publicKey: {
+                    // Parameter WebAuthn untuk registrasi
+                }
+            });
+            const fingerprintData = btoa(JSON.stringify(credential));
+            fetch('/register', {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({ username, diriData })
+            });
+        });
+
+        document.getElementById('loginButton').addEventListener('click', async () => {
+            const username = prompt('Masukan Nama:');
+            const credential = await navigator.credentials.get({
+                publicKey: {
+                    // Parameter WebAuthn untuk autentikasi
+                }
+            });
+            const fingerprintData = btoa(JSON.stringify(credential));
+            fetch('/login', {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({ username, diritData })
+            }).then(response => {
+                if (response.ok) {
+                    alert('Masuk Sukses');
+                } else {
+                    alert('Kesalahan Data Diri');
+                }
+            });
+        });
+    </script>
+    </div>
+</body>
+</html>

@@ -2,6 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>User Login</title>
     <link rel="stylesheet" href="Login/styles.css">
 </head>
@@ -10,12 +11,26 @@
         <h1>User Login</h1>
         <form id="loginForm">
             <div class="form-group">
-                <label for="username">Kode Token:</label>
+                <label for="kode">Kode Token:</label>
                 <input type="password" id="kode" name="kode" required>
             </div>
-            <a href="halaman utama.html"> <button type="submit"> Masuk </button></a> 
+            <button type="submit">Masuk</button> 
         </form>
     </div>
     <script src="Login/script.js"></script>
+    <script>
+        // Handle form submission
+        document.getElementById("loginForm").addEventListener("submit", function(event) {
+            event.preventDefault(); // Prevent form submission
+            const kode = document.getElementById("kode").value;
+
+            // You can add a simple validation or API call here
+            if (kode === "123456") { // Replace this with your actual token logic
+                window.location.href = "halaman utama.html"; // Redirect to the main page
+            } else {
+                alert("Kode Token salah, coba lagi.");
+            }
+        });
+    </script>
 </body>
 </html>

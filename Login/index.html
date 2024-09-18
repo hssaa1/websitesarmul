@@ -18,19 +18,5 @@
         </form>
     </div>
     <script src="Login/script.js"></script>
-    <script>
-        // Handle form submission
-        document.getElementById("loginForm").addEventListener("submit", function(event) {
-            event.preventDefault(); // Prevent form submission
-            const kode = document.getElementById("kode").value;
-
-            // You can add a simple validation or API call here
-            if (kode === "123456") { // Replace this with your actual token logic
-                window.location.href = "halaman utama.html"; // Redirect to the main page
-            } else {
-                alert("Kode Token salah, coba lagi.");
-            }
-        });
-    </script>
 </body>
 </html>

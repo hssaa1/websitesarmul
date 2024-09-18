@@ -1,22 +1,12 @@
-// login.js
-document.getElementById('loginForm').addEventListener('submit', (event) => {
-    event.preventDefault();
+// Handle form submission
+document.getElementById("loginForm").addEventListener("submit", function(event) {
+    event.preventDefault(); // Prevent form submission
+    const kode = document.getElementById("kode").value;
 
-    const username = document.getElementById('username').value;
-    const password = document.getElementById('password').value;
-
-    // Simulate sending data to the server
-    fetch('/login', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ username, password })
-    }).then(response => {
-        if (response.ok) {
-            alert('Login successful.');
-            // Redirect to another page or perform some action upon successful login
-        } else {
-            alert('Invalid username or password.');
-        }
-    });
+    // Validasi kode token
+    if (kode === "123456") { // Ubah "123456" sesuai dengan token yang diinginkan
+        window.location.href = "halaman utama.html"; // Redirect ke halaman utama
+    } else {
+        alert("Kode Token salah, coba lagi.");
+    }
 });
-  
